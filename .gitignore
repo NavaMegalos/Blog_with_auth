@@ -1,0 +1,44 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+
+# Ignore virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Migrations (opcional ignorarlas si no quieres trackearlas manualmente)
+# **Sólo si sabes lo que haces**
+# */migrations/*.pyc
+# */migrations/*.pyo
+# */migrations/__pycache__/
+
+# dotenv
+*.env
+
+# pip tools
+pip-wheel-metadata/
