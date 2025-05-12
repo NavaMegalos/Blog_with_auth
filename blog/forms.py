@@ -3,7 +3,13 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Author, Post, Comentario
 
 class AuthorLoginForm(forms.Form):
-    username = forms.CharField(label='Usuario', max_length=150)
+    username = forms.CharField(
+        label='Usuario', 
+        max_length=150, 
+        widget=forms.TextInput(
+            attrs={'class': 'form-control p-3 w-25'},
+        )
+    )
     password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     
 class AuthorCreateForm(UserCreationForm):
@@ -11,18 +17,18 @@ class AuthorCreateForm(UserCreationForm):
         label='Correo', 
         required=True, 
         help_text='', 
-        widget=forms.EmailInput(attrs={'placeholder': 'Introduce un correo'}),
+        widget=forms.EmailInput(attrs={'placeholder': 'Introduce un correo', 'class': 'form-control'}),
         error_messages={'required': 'Este campo es obligatorio'}
     )
     password1 = forms.CharField(
         label='Contraseña',
-        widget=forms.PasswordInput(attrs={'placeholder': 'Introduce una contraseña segura'}),
+        widget=forms.PasswordInput(attrs={'placeholder': 'Introduce una contraseña segura', 'class': 'form-control'}),
         help_text='',
         error_messages={'required': 'Este campo es obligatorio'}
     )
     password2 = forms.CharField(
         label='Confirmar contraseña',
-        widget=forms.PasswordInput(attrs={'placeholder': 'Confirma tu contraseña'}),
+        widget=forms.PasswordInput(attrs={'placeholder': 'Confirma tu contraseña', 'class': 'form-control'}),
         help_text='',
         error_messages={'required': 'Este campo es obligatorio'}
     )
@@ -38,9 +44,9 @@ class AuthorCreateForm(UserCreationForm):
         }
         
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder': 'Introduce tu nombre de usuario'}),
-            'email': forms.EmailInput(attrs={'placeholder': 'Introduce tu email'}),
-            'first_name': forms.TextInput(attrs={'placeholder': 'Introduce tu nombre'}),
+            'username': forms.TextInput(attrs={'placeholder': 'Introduce tu nombre de usuario', 'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Introduce tu email', 'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={'placeholder': 'Introduce tu nombre', 'class': 'form-control'}),
         }
         
         help_texts = {
