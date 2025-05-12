@@ -4,13 +4,24 @@ from .models import Author, Post, Comentario
 
 class AuthorLoginForm(forms.Form):
     username = forms.CharField(
-        label='Usuario', 
-        max_length=150, 
+        label='Usuario',
+        max_length=150,
         widget=forms.TextInput(
-            attrs={'class': 'form-control p-3 w-25'},
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Ingresa tu usuario',
+            }
         )
     )
-    password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
+    password = forms.CharField(
+        label='Contraseña',
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Ingresa tu contraseña',
+            }
+        )
+    )
     
 class AuthorCreateForm(UserCreationForm):
     email = forms.EmailField(
@@ -79,14 +90,22 @@ class PostCreateForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('titulo', 'contenido')
-                
+        
         labels = {
-            'titulo': 'Titulo',
+            'titulo': 'Título',
             'contenido': 'Contenido',
         }
         
+        widgets = {
+            'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Introduce el título'}),
+            'contenido': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Escribe el contenido'}),
+        }
         
 class ComentarioCreateForm(forms.ModelForm):
     class Meta:
         model = Comentario
         fields = ('texto',)
+        
+        widgets = {
+            'texto': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Escribe tu comentario'}),
+        }
